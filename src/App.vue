@@ -14,7 +14,7 @@ import TheWelcome from "./components/TheWelcome.vue";
     />
 
     <div class="wrapper">
-      <HelloWorld msg="ともすた" />
+      <HelloWorld msg="hello" />
     </div>
   </header>
 
