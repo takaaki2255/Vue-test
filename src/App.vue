@@ -57,7 +57,7 @@ const addTodo = () => {
   </ul>
 </template> -->
 
-<script setup>
+<!-- <script setup>
 import { ref } from "vue";
 
 const todos = ref([]);
@@ -82,4 +82,30 @@ const removeTodo = (index) => {
     </li>
   </ul>
   <p v-if="todos.length === 0">※ToDoを追加してください</p>
+</template> -->
+
+<!-- アプリ開発名　簡易型ジャンケンポン -->
+<script setup></script>
+
+<template>
+  <head>
+    <meta charset="utf-8" />
+    <title>rock paper scissors</title>
+    <!-- <style></style> -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>じゃんけん　　ポンッ！</h1>
+      <div>
+        <p>ボタンを押してね</p>
+        <p>グー</p>
+        <p>チョキ</p>
+        <p>パー</p>
+      </div>
+      <div>
+        <p>勝ち　負け　引き分け</p>
+      </div>
+    </div>
+  </body>
+  <footer></footer>
 </template>
