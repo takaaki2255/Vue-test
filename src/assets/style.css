@@ -1,0 +1,13 @@
+h1 {
+  color: brown;
+}
+
+.btn {
+  font-size: 1.375rem;
+  background: brown;
+  color: #fff;
+  padding: 18px 32px;
+  border-radius: 5px;
+  font-family: Impact;
+  margin: 5px 20px;
+}
