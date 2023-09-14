@@ -12,11 +12,12 @@ h1 {
   color: #fff;
   padding: 18px 32px;
   border-radius: 5px;
-  font-family: Impact;
+  font-family: sans-serif;
   margin: 5px 20px;
 }
 .btn:hover {
   background: grey;
+  color: brown;
 }
 .btnAdd {
   font-size: 1.375rem;

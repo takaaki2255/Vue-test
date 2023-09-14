@@ -1,56 +1,64 @@
-<!-- アプリ開発名　簡易型ジャンケンポン -->
-<script setup>
-import { ref } from "vue";
+<script lang="ts">
+import { defineComponent, ref } from "vue";
 
-const title = "じゃんけん　　ポンッ！ 最初に表示　　ボタン後消す";
-const message = "ボタンを押してね　最初に表示　　ボタン後消す";
-const answer = "勝ち　負け　引き分け　ボタンを押したら表示";
-// const handGu = ref([
-//   {
-//     name: "グー",
-//     image: "./public/image/Gu.png",
-//     click: false,
-//   },
-// ]);
-// const handChoki = ref([
-//   {
-//     name: "チョキ",
-//     image: "./public/image/choki.png",
-//     click: false,
-//   },
-// ]);
-// const handPa = ref([
-//   {
-//     id: 3,
-//     name: "パー",
-//     image: "./public/image/pa.png",
-//     click: false,
-//   },
-// ]);
+export default defineComponent({
+  setup() {
+    //　勝敗の結果を表す変数を定義。初期値は空文字
+    const result = ref("");
+    //　コンピュータの手を表す変数を定義
+    const computer = ref("");
+    // コンピュータの手を画像で表示
+    // const image
+    // コンピュータの手をランダムに決める
+    function play(player: string) {
+      const hands = ["グー", "チョキ", "パー"];
+      computer.value = hands[Math.floor(Math.random() * hands.length)];
+      // じゃんけんの勝敗を判定するロジック
+      if (player === computer.value) {
+        result.value = "引き分け";
+      } else if (
+        (player === "グー" && computer.value === "チョキ") ||
+        (player === "チョキ" && computer.value === "パー") ||
+        (player === "パー" && computer.value === "グー")
+      ) {
+        result.value = "勝ち";
+      } else {
+        result.value = "負け";
+      }
+    }
+    return {
+      result,
+      computer,
+      play,
+    };
+    //   画像を表示させる
+    // if(computer.value === "グー") {
+    //   Image.value =;
+    // } elseif (  computer.value === "チョキ") {
+    //   Image.value =;
+    // } else {
+    //   Image.value =;
+    // }
+  },
+});
 </script>
 
 <template>
-  <head>
-    <meta charset="utf-8" />
-    <title>rock paper scissors</title>
-  </head>
-
-  <body>
+  <div>
     <header>
-      <h3>じゃんけんをしましょう</h3>
+      <h2>じゃんけんをしましょう</h2>
     </header>
-    <div class="container">
-      <h1 v-html="title"></h1>
-      <p v-html="message"></p>
-      <div class="table">
-        <button class="btn">グー</button>
-        <button class="btn">チョキ</button>
-        <button class="btn">パー</button>
-      </div>
-      <p v-html="answer"></p>
+    <h1>じゃんけんゲーム</h1>
+    <h2 v-if="result == ''">ボタンを押してね</h2>
+    <h1 class="text">相手： {{ computer }}</h1>
+    <div class="table">
+      <button class="btn" @click="play('グー')">グー</button>
+      <button class="btn" @click="play('チョキ')">チョキ</button>
+      <button class="btn" @click="play('パー')">パー</button>
     </div>
-    <footer>
-      <h2>勝てたら良い事があるかもね‼︎</h2>
-    </footer>
-  </body>
+    <h1 class="text">{{ result }}</h1>
+  </div>
+  <footer>
+    <h2>勝てたら良い事があるかもね‼︎</h2>
+  </footer>
 </template>
