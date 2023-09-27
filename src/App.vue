@@ -1,14 +1,14 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 
-// コンピュータの手を画像で表示
-
 export default defineComponent({
   setup() {
     //　勝敗の結果を表す変数を定義。初期値は空文字
     const result = ref("");
     //　コンピュータの手を表す変数を定義
     const computer = ref("");
+    // コンピュータの手を画像で表示
+    const imgs = ref("");
     // コンピュータの手をランダムに決める
     function play(player: string) {
       const hands = ["グー", "チョキ", "パー"];
@@ -25,10 +25,21 @@ export default defineComponent({
       } else {
         result.value = "負け";
       }
+      // 画像の表示を変更する
+      // if (computer.value === "グー") {
+      //   imgs.value = require("../assets/images/Gu.png").default;
+      // } else if (computer.value === "チョキ") {
+      //   imgs.value = require("../assets/images/choki.png").default;
+      // } else if (computer.value === "パー") {
+      //   imgs.value = require("../assets/images/Pa.png").default;
+      // } else {
+      //   imgs.value = require("../assets/images/top.png").default;
+      // }
     }
     return {
       result,
       computer,
+      imgs,
       play,
     };
     //   画像を表示させる
@@ -48,18 +59,18 @@ export default defineComponent({
     <header>
       <h2>じゃんけんをしましょう</h2>
     </header>
-    <h1>じゃんけん</h1>
-    <img src="@/assets/images/top.png" alt="" class="header__logo" />
-    <h2 v-if="result == ''">ボタンを押してね</h2>
-    <h1 class="text">{{ computer }}</h1>
+    <p>じゃんけん</p>
+    <img :src="imgs" alt="Logo" class="header__logo" />
+    <p v-if="result == ''">ボタンを押してね</p>
+    <p class="text">{{ computer }}</p>
     <div class="table">
       <button class="btn" @click="play('グー')">グー</button>
       <button class="btn" @click="play('チョキ')">チョキ</button>
       <button class="btn" @click="play('パー')">パー</button>
     </div>
-    <h1 class="text">{{ result }}</h1>
+    <p class="text">{{ result }}</p>
   </div>
   <footer>
-    <h2>勝てたら良い事があるかもね‼︎</h2>
+    <p>勝てたら良い事があるかもね‼︎</p>
   </footer>
 </template>
