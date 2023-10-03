@@ -8,11 +8,19 @@ export default defineComponent({
     //　コンピュータの手を表す変数を定義
     const computer = ref("");
     // コンピュータの手を画像で表示
-    const imgs = ref("");
+    const imgs = ref("top");
     // コンピュータの手をランダムに決める
     function play(player: string) {
       const hands = ["グー", "チョキ", "パー"];
       computer.value = hands[Math.floor(Math.random() * hands.length)];
+      // 画像の表示を変更する
+      if (computer.value === "グー") {
+        imgs.value = "Gu";
+      } else if (computer.value === "チョキ") {
+        imgs.value = "choki";
+      } else {
+        imgs.value = "Pa";
+      }
       // じゃんけんの勝敗を判定するロジック
       if (player === computer.value) {
         result.value = "引き分け";
@@ -25,16 +33,6 @@ export default defineComponent({
       } else {
         result.value = "負け";
       }
-      // 画像の表示を変更する
-      // if (computer.value === "グー") {
-      //   imgs.value = require("../assets/images/Gu.png").default;
-      // } else if (computer.value === "チョキ") {
-      //   imgs.value = require("../assets/images/choki.png").default;
-      // } else if (computer.value === "パー") {
-      //   imgs.value = require("../assets/images/Pa.png").default;
-      // } else {
-      //   imgs.value = require("../assets/images/top.png").default;
-      // }
     }
     return {
       result,
@@ -42,14 +40,6 @@ export default defineComponent({
       imgs,
       play,
     };
-    //   画像を表示させる
-    // if(computer.value === "グー") {
-    //   Image.value =;
-    // } elseif (  computer.value === "チョキ") {
-    //   Image.value =;
-    // } else {
-    //   Image.value =;
-    // }
   },
 });
 </script>
@@ -60,7 +50,11 @@ export default defineComponent({
       <h2>じゃんけんをしましょう</h2>
     </header>
     <p>じゃんけん</p>
-    <img :src="imgs" alt="Logo" class="header__logo" />
+    <img
+      :src="`./src/assets/images/${imgs}.png`"
+      alt="相手の手"
+      class="header__logo"
+    />
     <p v-if="result == ''">ボタンを押してね</p>
     <p class="text">{{ computer }}</p>
     <div class="table">
