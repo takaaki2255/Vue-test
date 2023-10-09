@@ -3,7 +3,14 @@ body {
 }
 
 h1 {
-  color: brown;
+  color: #fff;
+  font-family: "MS PGothic";
+  font-size: 300%;
+}
+
+p {
+  font-size: 150%;
+  font-family: "游ゴシック体";
 }
 
 .btn {
@@ -33,16 +40,20 @@ footer {
   color: #fff;
   background-color: brown;
   width: 100%;
-  padding: 15px 0;
+  padding: 8px 0;
   margin: 0 auto;
   text-align: center;
+}
+
+.under {
+  font-size: 150%;
 }
 
 header {
   color: #fff;
   background-color: brown;
   width: 100%;
-  padding: 15px 0;
+  padding: 8px 0;
   margin: 0 auto;
   text-align: center;
 }

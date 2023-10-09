@@ -47,9 +47,9 @@ export default defineComponent({
 <template>
   <div id="app">
     <header>
-      <h2>じゃんけんをしましょう</h2>
+      <h1>じゃんけんアプリ</h1>
     </header>
-    <p>じゃんけん</p>
+    <p>ジャンケンッ‼︎</p>
     <img
       :src="`./src/assets/images/${imgs}.png`"
       alt="相手の手"
@@ -65,6 +65,6 @@ export default defineComponent({
     <p class="text">{{ result }}</p>
   </div>
   <footer>
-    <p>勝てたら良い事があるかもね‼︎</p>
+    <p class="under">プロトタイプ</p>
   </footer>
 </template>
